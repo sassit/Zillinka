@@ -101,6 +101,35 @@ Listening on port 8080!
 
 - In general, make sure that you use the Chainlink [standard format](https://docs.chain.link/docs/developers#requesting-data) for the payload for your custom external adapter.
 
+### Quick start
+```
+$ git clone https://github.com/sassit/Zillinka.git
+$ cd Zillinka
+$ ./run # takes a while on first time
+    > installation output
+$ docker ps # look for IMAGE of one of the two: zillinka_external-adapter-{unixtime,rhine_gauge} and copy the CONTAINER ID 
+    > CONTAINER ID  IMAGE   COMMAND etc
+    > ...           ...     ...     ... 
+$ docker logs -f [CONTAINER ID]
+Listening on port 8080!
+```
+Load in [IDE](https://ide.zilliqa.com/#/) the contracts (already deployed with addresses to follow):
+- Unix Time
+    - oracle client contract: 0x1dca0453a0955ddf91f1c5ddf64b57f872d42a54
+    - oracle contract: 0x10281c73644ea6749087720b2bf9c539a3a99bfb
+
+- Rhine Gauge
+    - oracle client contract: 0xc84f946d9044d72893cc441779d3b5f44f00cfb7
+    - oracle contract: 0x1594fdfc6eb2a3dc710b8f65bb327c910d82577e
+
+On client contracts call transition `data_request`: 
+- Unix Time: `data_request()` without argument to get current time from [worldtimeapi]('http://worldtimeapi.org/api/').
+- Rhine Gauge: `data_request(data: String)` with desired date in the form yyyy-mm-dd to get gauge level from [pegelonline](https://www.pegelonline.wsv.de/) for station Kaub of Rhine river. 
+
+```
+$ ./stop
+```
+
 ### Issues
 
 If you encounter errors on the EI flow, you can raise an issue on this repo.
