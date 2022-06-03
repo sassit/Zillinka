@@ -123,7 +123,7 @@ Load in [IDE](https://ide.zilliqa.com/#/) the contracts (already deployed with a
     - oracle contract: 0x1594fdfc6eb2a3dc710b8f65bb327c910d82577e
 
 On client contracts call transition `data_request`: 
-- Unix Time: `data_request()` without argument to get current time from [worldtimeapi]('http://worldtimeapi.org/api/').
+- Unix Time: `data_request()` without argument to get current time from [worldtimeapi](http://worldtimeapi.org/api/).
 - Rhine Gauge: `data_request(data: String)` with desired date in the form yyyy-mm-dd to get gauge level from [pegelonline](https://www.pegelonline.wsv.de/) for station Kaub of Rhine river. 
 
 ```
